@@ -3,26 +3,13 @@ class Solution:
         if len(s) != len(t):
             return False
 
-        hash = {}
-        cnt = 1
+        lettercountS, lettercountT = {}, {}
 
-        for x in s:
-            if x in hash:
-                hash[x] += 1
-            else:
-                hash[x] = cnt 
-        
-        for y in t:
-            if y in hash:
-                hash[y] -= 1
-            else:
-                return False
-
-        for z in hash:
-            if hash[z] != 0:
-                return False
-               
-
-        return True
-
-        
+        for i in range(len(s)):
+            charS = s[i] # the character at the i index for string s
+             # then we increment the counter for that letter
+            lettercountS[charS] = 1 + lettercountS.get(charS, 0)
+            
+            charT = t[i] # the character at the i index for strong t
+            lettercountT[charT] = 1 + lettercountT.get(charT, 0)   
+        return lettercountS == lettercountT
