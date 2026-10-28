@@ -1,0 +1,26 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        hash = {}
+
+        for x in s:
+            if x in hash:
+                hash[x] += 1
+            else:
+                hash[x] = 1
+        
+        for y in t:
+            if y in hash:
+                hash[y] -= 1
+            else:
+                return False
+
+        for z in hash:
+            if hash[z] != 0:
+                return False
+               
+
+        return True
+    
